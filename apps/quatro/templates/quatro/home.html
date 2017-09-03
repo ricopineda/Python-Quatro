@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+	<html>
+		<head>
+			<title> Home Page </title>
+		</head>
+		<body>
+			<h1> Hello, {{ user.name }} </h1>
+			<h3> Here is a list of your friends: </h3>
+			<table>
+				<tr>
+					<th> Alias </th>
+					<th> Action </th>
+				</tr>
+				{% for item in friends %}
+				<tr>
+					<td> {{ item.name }} </td>
+					<td> <a href="/profile/{{item.id}}"> View Profile </a>  <a href="/remove/{{item.id}}"> Remove Friend </a></td>
+				</tr>
+				{% endfor %}
+			</table>
+
+			<h3> Other Users not on your friends list </h3>
+			<table>
+				<tr>
+					<td> Alias </td>
+					<td> Action </a></td>
+				</tr>
+				{% for item in users %}
+				<tr>
+					<td> <a href="profile/{{item.id}}">{{ item.name }} </a></td>
+					<td> <a href="add/{{item.id}}" method="post"> <button> Add as Friend  </button></a></td>
+				</tr>
+				{% endfor %}
+			</table>
+			<a href="logout" method="post"> <button> Logout </button></a>
+		</body>
+	</html>
